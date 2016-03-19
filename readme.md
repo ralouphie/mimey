@@ -10,6 +10,18 @@ PHP package for converting file extensions to MIME types and vice versa.
 [![Latest Unstable Version](https://poser.pugx.org/ralouphie/mimey/v/unstable.png)](https://packagist.org/packages/ralouphie/mimey)
 [![License](https://poser.pugx.org/ralouphie/mimey/license.png)](https://packagist.org/packages/ralouphie/mimey)
 
+## Usage
+
+```php
+$mimes = new \Mimey\MimeTypes;
+
+// Convert extension to MIME type:
+$mimes->getMimeType('json'); // application/json
+
+// Convert MIME type to extension:
+$mimes->getExtension('application/json'); // json
+```
+
 ## Install
 
 Compatible with PHP >= 5.3.
