@@ -1,0 +1,15 @@
+languages:
+  PHP: true
+
+exclude_paths:
+  - mime.types.php
+  - build/**/*
+  - tests/**/*
+  - vendor/**/*
+
+engines:
+  phpmd:
+    enabled: true
+    checks:
+      Controversial/CamelCaseVariableName:
+        enabled: false
