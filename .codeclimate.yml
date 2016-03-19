@@ -11,6 +11,8 @@ engines:
   phpmd:
     enabled: true
     checks:
+      Controversial/CamelCasePropertyName:
+        enabled: false
       Controversial/CamelCaseParameterName:
         enabled: false
       Controversial/CamelCaseVariableName:
