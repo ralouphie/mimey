@@ -1,17 +1,8 @@
+languages:
+  PHP: true
+
 exclude_paths:
   - mime.types.php
+  - build/**/*
   - tests/**/*
   - vendor/**/*
-
-engines:
-  phpcodesniffer:
-    enabled: true
-  phpmd:
-    enabled: true
-    checks:
-      Controversial/CamelCasePropertyName:
-        enabled: false
-      Controversial/CamelCaseParameterName:
-        enabled: false
-      Controversial/CamelCaseVariableName:
-        enabled: false
