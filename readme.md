@@ -22,6 +22,22 @@ $mimes->getMimeType('json'); // application/json
 $mimes->getExtension('application/json'); // json
 ```
 
+### Getting All
+
+Many extensions have multiple MIME types:
+
+```
+// Get all extensions for a MIME type:
+$mimes->getAllExtensions('image/jpeg'); // array('jpeg', 'jpg', 'jpe')
+```
+
+It's rare, but some MIME types have multiple extensions too:
+
+```
+// Get all MIME types for an extension:
+$mimes->getAllMimeTypes('wmz'); // array('application/x-ms-wmz', 'application/x-msmetafile')
+```
+
 ## Install
 
 Compatible with PHP >= 5.3.
