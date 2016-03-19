@@ -1,0 +1,95 @@
+<?php
+
+namespace Mimey;
+
+/**
+ * Class for converting MIME types to file extensions and vice versa.
+ */
+class MimeTypes implements MimeTypesInterface
+{
+	/** @var array The cached built-in mapping array. */
+	private static $built_in;
+
+	/** @var array The mapping array. */
+	protected $mapping;
+
+	/**
+	 * Create a new mime types instance with the given mappings.
+	 *
+	 * If no mappings are defined, they will default to the ones included with this package.
+	 *
+	 * @param array $mapping An associative array containing two entries.
+	 * Entry "mimes" being an associative array of extension to array of MIME types.
+	 * Entry "extensions" being an associative array of MIME type to array of extensions.
+	 * Example:
+	 * <code>
+	 * array(
+	 *   'mimes' => array(
+	 *     'application/json' => array('json'),
+	 *     'image/jpeg'       => array('jpg', 'jpeg'),
+	 *     ...
+	 *   ),
+	 *   'extensions' => array(
+	 *     'json' => array('application/json'),
+	 *     'jpeg' => array('image/jpeg'),
+	 *     ...
+	 *   )
+	 * )
+	 * </code>
+	 */
+	public function __construct($mapping = null)
+	{
+		if ($mapping === null) {
+			if (self::$built_in === null) {
+				self::$built_in = require(dirname(__DIR__) . '/mime.types.php');
+			}
+			$this->mapping = self::$built_in;
+		} else {
+			$this->mapping = $mapping;
+		}
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function getMimeType($extension)
+	{
+		if (!empty($this->mapping['mimes'][$extension])) {
+			return $this->mapping['mimes'][$extension][0];
+		}
+		return null;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function getExtension($mime_type)
+	{
+		if (!empty($this->mapping['extensions'][$mime_type])) {
+			return $this->mapping['extensions'][$mime_type][0];
+		}
+		return null;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function getAllMimeTypes($extension)
+	{
+		if (isset($this->mapping['mimes'][$extension])) {
+			return $this->mapping['mimes'][$extension];
+		}
+		return array();
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function getAllExtensions($mime_type)
+	{
+		if (isset($this->mapping['extensions'][$mime_type])) {
+			return $this->mapping['extensions'][$mime_type];
+		}
+		return array();
+	}
+}
