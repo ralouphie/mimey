@@ -1,10 +1,11 @@
 exclude_paths:
   - mime.types.php
-  - build/**/*
   - tests/**/*
   - vendor/**/*
 
 engines:
+  phpcodesniffer:
+    enabled: true
   phpmd:
     enabled: true
     checks:
