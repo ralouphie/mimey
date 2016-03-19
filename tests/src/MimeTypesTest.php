@@ -82,5 +82,6 @@ class MimeTypesTest extends \PHPUnit_Framework_TestCase
 	{
 		$mime = new \Mimey\MimeTypes();
 		$this->assertEquals('json', $mime->getExtension('application/json'));
+		$this->assertEquals('application/json', $mime->getMimeType('json'));
 	}
 }
