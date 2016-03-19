@@ -10,7 +10,7 @@ PHP package for converting file extensions to MIME types and vice versa.
 [![Latest Unstable Version](https://poser.pugx.org/ralouphie/mimey/v/unstable.png)](https://packagist.org/packages/ralouphie/mimey)
 [![License](https://poser.pugx.org/ralouphie/mimey/license.png)](https://packagist.org/packages/ralouphie/mimey)
 
-This package uses [httpd][]'s [mime.types][] to generate a mapping of file extension MIME type to and the other way around.
+This package uses [httpd][]'s [mime.types][] to generate a mapping of file extension to MIME type and the other way around.
 
 The `mime.types` file is parsed and converted into an optimized PHP array which is then wrapped by a helper class.
 
