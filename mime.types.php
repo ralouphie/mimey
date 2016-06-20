@@ -5,6 +5,10 @@
     array (
       0 => 'application/andrew-inset',
     ),
+    'amr' => 
+    array (
+      0 => 'audio/amr',
+    ),
     'aw' => 
     array (
       0 => 'application/applixware',
