@@ -2898,6 +2898,10 @@
     array (
       0 => 'audio/adpcm',
     ),
+    'amr' => 
+    array (
+      0 => 'audio/amr',
+    ),
     'au' => 
     array (
       0 => 'audio/basic',
@@ -6425,6 +6429,10 @@
     'audio/adpcm' => 
     array (
       0 => 'adp',
+    ),
+    'audio/amr' => 
+    array (
+      0 => 'amr',
     ),
     'audio/basic' => 
     array (
