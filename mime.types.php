@@ -2934,6 +2934,10 @@
     array (
       0 => 'audio/mp4',
     ),
+    'mp3' => 
+    array (
+      0 => 'audio/mpeg',
+    ),
     'mpga' => 
     array (
       0 => 'audio/mpeg',
@@ -2943,10 +2947,6 @@
       0 => 'audio/mpeg',
     ),
     'mp2a' => 
-    array (
-      0 => 'audio/mpeg',
-    ),
-    'mp3' => 
     array (
       0 => 'audio/mpeg',
     ),
@@ -6453,10 +6453,10 @@
     ),
     'audio/mpeg' => 
     array (
-      0 => 'mpga',
-      1 => 'mp2',
-      2 => 'mp2a',
-      3 => 'mp3',
+      0 => 'mp3',
+      1 => 'mpga',
+      2 => 'mp2',
+      3 => 'mp2a',
       4 => 'm2a',
       5 => 'm3a',
     ),
