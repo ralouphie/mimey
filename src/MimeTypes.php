@@ -24,12 +24,12 @@ class MimeTypes implements MimeTypesInterface
 	 * Example:
 	 * <code>
 	 * array(
-	 *   'mimes' => array(
+	 *   'extensions' => array(
 	 *     'application/json' => array('json'),
 	 *     'image/jpeg'       => array('jpg', 'jpeg'),
 	 *     ...
 	 *   ),
-	 *   'extensions' => array(
+	 *   'mimes' => array(
 	 *     'json' => array('application/json'),
 	 *     'jpeg' => array('image/jpeg'),
 	 *     ...
@@ -40,10 +40,7 @@ class MimeTypes implements MimeTypesInterface
 	public function __construct($mapping = null)
 	{
 		if ($mapping === null) {
-			if (self::$built_in === null) {
-				self::$built_in = require(dirname(__DIR__) . '/mime.types.php');
-			}
-			$this->mapping = self::$built_in;
+			$this->mapping = self::getBuiltIn();
 		} else {
 			$this->mapping = $mapping;
 		}
@@ -98,9 +95,22 @@ class MimeTypes implements MimeTypesInterface
 	}
 
 	/**
+	 * Get the built-in mapping.
+	 *
+	 * @return array The built-in mapping.
+	 */
+	protected static function getBuiltIn()
+	{
+		if (self::$built_in === null) {
+			self::$built_in = require(dirname(__DIR__) . '/mime.types.php');
+		}
+		return self::$built_in;
+	}
+
+	/**
 	 * Normalize the input string using lowercase/trim.
 	 *
-	 * @param $input The string to normalize.
+	 * @param string $input The string to normalize.
 	 *
 	 * @return string The normalized string.
 	 */
