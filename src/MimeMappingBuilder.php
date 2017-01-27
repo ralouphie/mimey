@@ -30,8 +30,8 @@ class MimeMappingBuilder
 	 */
 	public function add($mime, $extension, $prepend_extension = true, $prepend_mime = true)
 	{
-		$existing_extensions = empty($this->mapping['extensions'][$mime]) ? [] : $this->mapping['extensions'][$mime];
-		$existing_mimes = empty($this->mapping['mimes'][$extension]) ? [] : $this->mapping['mimes'][$extension];
+		$existing_extensions = empty($this->mapping['extensions'][$mime]) ? array() : $this->mapping['extensions'][$mime];
+		$existing_mimes = empty($this->mapping['mimes'][$extension]) ? array() : $this->mapping['mimes'][$extension];
 		if ($prepend_extension) {
 			array_unshift($existing_extensions, $extension);
 		} else {
