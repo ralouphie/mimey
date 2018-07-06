@@ -41,6 +41,8 @@ class MimeMappingGenerator
 					if ($mime && $extension) {
 						$mapping['mimes'][$extension][] = $mime;
 						$mapping['extensions'][$mime][] = $extension;
+						$mapping['mimes'][$extension] = array_unique($mapping['mimes'][$extension]);
+						$mapping['extensions'][$mime] = array_unique($mapping['extensions'][$mime]);
 					}
 				}
 			}

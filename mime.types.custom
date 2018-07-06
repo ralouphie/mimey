@@ -1,0 +1,20 @@
+# This file is in the same format as mime.types but the
+# mappings in this file take precedence.
+#
+# MIME type (lowercased)			Extensions
+# ============================================	==========
+
+application/font-woff					wof
+application/php					php
+application/x-font-otf					otf
+application/x-font-ttf					ttf ttc
+application/x-gzip					zip
+application/x-httpd-php					php
+application/x-httpd-php-source					php
+application/x-php					php
+audio/amr					amr
+audio/mpeg					mp3 mpga mp2 mp2a m2a m3a
+image/jpeg					jpg jpeg jpe
+image/x-ms-bmp					bmp
+text/php					php
+text/x-php					php
