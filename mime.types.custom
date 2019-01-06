@@ -19,5 +19,5 @@ image/x-ms-bmp					bmp
 text/php					php
 text/x-php					php
 application/vnd.google-apps.document          docx
-application/vnd.google-apps.spreadsheet         xlsx
-application/vnd.google-apps.presentation          pptx
+application/vnd.google-apps.spreadsheet       xlsx
+application/vnd.google-apps.presentation      pptx
