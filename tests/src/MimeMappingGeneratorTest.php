@@ -1,10 +1,15 @@
 <?php
 
-class MimeMappingGeneratorTest extends \PHPUnit_Framework_TestCase
+namespace Mimey\Tests;
+
+use Mimey\MimeMappingGenerator;
+use PHPUnit\Framework\TestCase;
+
+class MimeMappingGeneratorTest extends TestCase
 {
 	public function testGenerateMapping()
 	{
-		$generator = new \Mimey\MimeMappingGenerator(
+		$generator = new MimeMappingGenerator(
 			"#ignore\tme\n" .
 			"application/json\t\t\tjson\n" .
 			"image/jpeg\t\t\tjpeg jpg #ignore this too\n\n" .
@@ -12,21 +17,21 @@ class MimeMappingGeneratorTest extends \PHPUnit_Framework_TestCase
 			"qux\tbar\n"
 		);
 		$mapping = $generator->generateMapping();
-		$expected = array(
-			'mimes' => array(
-				'json' => array('application/json'),
-				'jpeg' => array('image/jpeg'),
-				'jpg' => array('image/jpeg'),
-				'bar' => array('foo', 'qux'),
-				'baz' => array('foo')
-			),
-			'extensions' => array(
-				'application/json' => array('json'),
-				'image/jpeg' => array('jpeg', 'jpg'),
-				'foo' => array('bar', 'baz'),
-				'qux' => array('bar')
-			)
-		);
+		$expected = [
+			'mimes' => [
+				'json' => ['application/json'],
+				'jpeg' => ['image/jpeg'],
+				'jpg' => ['image/jpeg'],
+				'bar' => ['foo', 'qux'],
+				'baz' => ['foo'],
+			],
+			'extensions' => [
+				'application/json' => ['json'],
+				'image/jpeg' => ['jpeg', 'jpg'],
+				'foo' => ['bar', 'baz'],
+				'qux' => ['bar'],
+			],
+		];
 		$this->assertEquals($expected, $mapping);
 
 		$code = $generator->generateMappingCode();

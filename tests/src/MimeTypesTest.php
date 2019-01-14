@@ -1,86 +1,149 @@
 <?php
 
-class MimeTypesTest extends \PHPUnit_Framework_TestCase
+namespace Mimey\Tests;
+
+use Mimey\MimeTypes;
+use PHPUnit\Framework\TestCase;
+
+class MimeTypesTest extends TestCase
 {
 	/** @var \Mimey\MimeTypes */
 	protected $mime;
 
 	protected function setUp()
 	{
-		$this->mime = new \Mimey\MimeTypes(array(
-			'mimes' => array(
-				'json' => array('application/json'),
-				'jpeg' => array('image/jpeg'),
-				'jpg' => array('image/jpeg'),
-				'bar' => array('foo', 'qux'),
-				'baz' => array('foo')
-			),
-			'extensions' => array(
-				'application/json' => array('json'),
-				'image/jpeg' => array('jpeg', 'jpg'),
-				'foo' => array('bar', 'baz'),
-				'qux' => array('bar')
-			)
-		));
+		$this->mime = new MimeTypes([
+			'mimes' => [
+				'json' => ['application/json'],
+				'jpeg' => ['image/jpeg'],
+				'jpg' => ['image/jpeg'],
+				'bar' => ['foo', 'qux'],
+				'baz' => ['foo'],
+			],
+			'extensions' => [
+				'application/json' => ['json'],
+				'image/jpeg' => ['jpeg', 'jpg'],
+				'foo' => ['bar', 'baz'],
+				'qux' => ['bar'],
+			],
+		]);
 	}
 
-	public function testGetMimeType()
+	public function getMimeTypeProvider()
 	{
-		$this->assertEquals('application/json', $this->mime->getMimeType('json'));
-		$this->assertEquals('image/jpeg', $this->mime->getMimeType('jpeg'));
-		$this->assertEquals('image/jpeg', $this->mime->getMimeType('jpg'));
-		$this->assertEquals('foo', $this->mime->getMimeType('bar'));
-		$this->assertEquals('foo', $this->mime->getMimeType('baz'));
+		return [
+			['application/json', 'json'],
+			['image/jpeg', 'jpeg'],
+			['image/jpeg', 'jpg'],
+			['foo', 'bar'],
+			['foo', 'baz'],
+		];
 	}
 
-	public function testGetExtension()
+	/**
+	 * @dataProvider getMimeTypeProvider
+	 */
+	public function testGetMimeType($expectedMimeType, $extension)
 	{
-		$this->assertEquals('json', $this->mime->getExtension('application/json'));
-		$this->assertEquals('jpeg', $this->mime->getExtension('image/jpeg'));
-		$this->assertEquals('bar', $this->mime->getExtension('foo'));
-		$this->assertEquals('bar', $this->mime->getExtension('qux'));
+		$this->assertEquals($expectedMimeType, $this->mime->getMimeType($extension));
 	}
 
-	public function testGetAllMimeTypes()
+	public function getExtensionProvider()
 	{
-		$this->assertEquals(array('application/json'), $this->mime->getAllMimeTypes('json'));
-		$this->assertEquals(array('image/jpeg'), $this->mime->getAllMimeTypes('jpeg'));
-		$this->assertEquals(array('image/jpeg'), $this->mime->getAllMimeTypes('jpg'));
-		$this->assertEquals(array('foo', 'qux'), $this->mime->getAllMimeTypes('bar'));
-		$this->assertEquals(array('foo'), $this->mime->getAllMimeTypes('baz'));
+		return [
+			['json', 'application/json'],
+			['jpeg', 'image/jpeg'],
+			['bar', 'foo'],
+			['bar', 'qux'],
+		];
 	}
 
-	public function testGetAllExtensions()
+	/**
+	 * @dataProvider getExtensionProvider
+	 */
+	public function testGetExtension($expectedExtension, $mimeType)
 	{
-		$this->assertEquals(array('json'), $this->mime->getAllExtensions('application/json'));
-		$this->assertEquals(array('jpeg', 'jpg'), $this->mime->getAllExtensions('image/jpeg'));
-		$this->assertEquals(array('bar', 'baz'), $this->mime->getAllExtensions('foo'));
-		$this->assertEquals(array('bar'), $this->mime->getAllExtensions('qux'));
+		$this->assertEquals($expectedExtension, $this->mime->getExtension($mimeType));
+	}
+
+	public function getAllMimeTypesProvider()
+	{
+		return [
+			[
+				['application/json'], 'json',
+			],
+			[
+				['image/jpeg'], 'jpeg',
+			],
+			[
+				['image/jpeg'], 'jpg',
+			],
+			[
+				['foo', 'qux'], 'bar',
+			],
+			[
+				['foo'], 'baz',
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider getAllMimeTypesProvider
+	 */
+	public function testGetAllMimeTypes($expectedMimeTypes, $extension)
+	{
+		$this->assertEquals($expectedMimeTypes, $this->mime->getAllMimeTypes($extension));
+	}
+
+	public function getAllExtensionsProvider()
+	{
+		return [
+			[
+				['json'], 'application/json',
+			],
+			[
+				['jpeg', 'jpg'], 'image/jpeg',
+			],
+			[
+				['bar', 'baz'], 'foo',
+			],
+			[
+				['bar'], 'qux',
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider getAllExtensionsProvider
+	 */
+	public function testGetAllExtensions($expectedExtensions, $mimeType)
+	{
+		$this->assertEquals($expectedExtensions, $this->mime->getAllExtensions($mimeType));
 	}
 
 	public function testGetMimeTypeUndefined()
 	{
-		$this->assertEquals(null, $this->mime->getMimeType('undefined'));
+		$this->assertNull($this->mime->getMimeType('undefined'));
 	}
 
 	public function testGetExtensionUndefined()
 	{
-		$this->assertEquals(null, $this->mime->getExtension('undefined'));
+		$this->assertNull($this->mime->getExtension('undefined'));
 	}
 
 	public function testGetAllMimeTypesUndefined()
 	{
-		$this->assertEquals(array(), $this->mime->getAllMimeTypes('undefined'));
+		$this->assertEquals([], $this->mime->getAllMimeTypes('undefined'));
 	}
 
 	public function testGetAllExtensionsUndefined()
 	{
-		$this->assertEquals(array(), $this->mime->getAllExtensions('undefined'));
+		$this->assertEquals([], $this->mime->getAllExtensions('undefined'));
 	}
 
 	public function testBuiltInMapping()
 	{
-		$mime = new \Mimey\MimeTypes();
+		$mime = new MimeTypes();
 		$this->assertEquals('json', $mime->getExtension('application/json'));
 		$this->assertEquals('application/json', $mime->getMimeType('json'));
 	}

@@ -5,6 +5,15 @@
     array (
       0 => 'application/font-woff',
     ),
+    'php' => 
+    array (
+      0 => 'application/php',
+      1 => 'application/x-httpd-php',
+      2 => 'application/x-httpd-php-source',
+      3 => 'application/x-php',
+      4 => 'text/php',
+      5 => 'text/x-php',
+    ),
     'otf' => 
     array (
       0 => 'application/x-font-otf',
@@ -69,10 +78,6 @@
     array (
       0 => 'image/x-ms-bmp',
       1 => 'image/bmp',
-    ),
-    'php' => 
-    array (
-      0 => 'text/x-php',
     ),
     'ez' => 
     array (
@@ -3959,6 +3964,10 @@
     array (
       0 => 'wof',
     ),
+    'application/php' => 
+    array (
+      0 => 'php',
+    ),
     'application/x-font-otf' => 
     array (
       0 => 'otf',
@@ -3971,6 +3980,18 @@
     'application/x-gzip' => 
     array (
       0 => 'zip',
+    ),
+    'application/x-httpd-php' => 
+    array (
+      0 => 'php',
+    ),
+    'application/x-httpd-php-source' => 
+    array (
+      0 => 'php',
+    ),
+    'application/x-php' => 
+    array (
+      0 => 'php',
     ),
     'audio/amr' => 
     array (
@@ -3994,6 +4015,10 @@
     'image/x-ms-bmp' => 
     array (
       0 => 'bmp',
+    ),
+    'text/php' => 
+    array (
+      0 => 'php',
     ),
     'text/x-php' => 
     array (
