@@ -39,7 +39,7 @@ It's rare, but some extensions have multiple MIME types:
 $mimes->getAllMimeTypes('wmz'); // array('application/x-ms-wmz', 'application/x-msmetafile')
 ```
 
-However, there are many MIME types have multiple extensions:
+However, there are many MIME types that have multiple extensions:
 
 ```php
 // Get all extensions for a MIME type:
