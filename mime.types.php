@@ -3517,6 +3517,11 @@
     array (
       0 => 'text/plain',
     ),
+    'md' =>
+    array (
+      0 => 'text/markdown',
+      1 => 'text/plain',
+    ),
     'dsc' => 
     array (
       0 => 'text/prs.lines.tag',
@@ -6964,6 +6969,11 @@
       4 => 'list',
       5 => 'log',
       6 => 'in',
+      7 => 'md',
+    ),
+    'text/markdown' =>
+    array (
+      0 => 'md',
     ),
     'text/prs.lines.tag' => 
     array (
