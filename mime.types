@@ -1688,12 +1688,12 @@ text/csv					csv
 text/html					html htm
 # text/javascript
 # text/jcr-cnd
-# text/markdown
+text/markdown               md
 # text/mizar
 text/n3						n3
 # text/parameters
 # text/parityfec
-text/plain					txt text conf def list log in
+text/plain					txt text conf def list log in md
 # text/provenance-notation
 # text/prs.fallenstein.rst
 text/prs.lines.tag				dsc
