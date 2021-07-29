@@ -33,6 +33,8 @@
     array (
       0 => 'application/x-gzip',
       1 => 'application/zip',
+      2 => 'application/x-zip-compressed',
+      3 => 'application/x-zip',
     ),
     'amr' => 
     array (
@@ -6499,6 +6501,14 @@
     array (
       0 => 'zip',
     ),
+    'application/x-zip-compressed' =>
+    array (
+      0 => 'zip',
+    ),
+    'application/x-zip' =>
+	array (
+		0 => 'zip',
+	),
     'audio/adpcm' => 
     array (
       0 => 'adp',
