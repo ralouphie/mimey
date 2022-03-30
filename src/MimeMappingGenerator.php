@@ -9,14 +9,14 @@ namespace Mimey;
  */
 class MimeMappingGenerator
 {
-	protected $mime_types_text;
+	protected string $mime_types_text;
 
 	/**
 	 * Create a new generator instance with the given mime.types text.
 	 *
 	 * @param string $mime_types_text The text from the mime.types file.
 	 */
-	public function __construct($mime_types_text)
+	public function __construct(string $mime_types_text)
 	{
 		$this->mime_types_text = $mime_types_text;
 	}
@@ -26,8 +26,8 @@ class MimeMappingGenerator
 	 *
 	 * @return array The mapping.
 	 */
-	public function generateMapping()
-	{
+	public function generateMapping(): array
+    {
 		$mapping = array();
 		$lines = explode("\n", $this->mime_types_text);
 		foreach ($lines as $line) {
@@ -55,8 +55,8 @@ class MimeMappingGenerator
 	 *
 	 * @return string The mapping PHP code for inclusion.
 	 */
-	public function generateMappingCode()
-	{
+	public function generateMappingCode(): string
+    {
 		$mapping = $this->generateMapping();
 		$mapping_export = var_export($mapping, true);
 		return "<?php return $mapping_export;";

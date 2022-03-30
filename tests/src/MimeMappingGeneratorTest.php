@@ -7,8 +7,8 @@ use PHPUnit\Framework\TestCase;
 
 class MimeMappingGeneratorTest extends TestCase
 {
-	public function testGenerateMapping()
-	{
+	public function testGenerateMapping(): void
+    {
 		$generator = new MimeMappingGenerator(
 			"#ignore\tme\n" .
 			"application/json\t\t\tjson\n" .

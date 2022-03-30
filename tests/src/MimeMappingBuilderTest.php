@@ -8,8 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 class MimeMappingBuilderTest extends TestCase
 {
-	public function testFromEmpty()
-	{
+	public function testFromEmpty(): void
+    {
 		$builder = MimeMappingBuilder::blank();
 		$builder->add('foo/bar', 'foobar');
 		$builder->add('foo/bar', 'bar');
@@ -27,8 +27,8 @@ class MimeMappingBuilderTest extends TestCase
 		$this->assertEquals(['foo/baz'], $mime->getAllMimeTypes('foobaz'));
 	}
 
-	public function testFromBuiltIn()
-	{
+	public function testFromBuiltIn(): void
+    {
 		$builder = MimeMappingBuilder::create();
 		$mime1 = new MimeTypes($builder->getMapping());
 		$this->assertEquals('json', $mime1->getExtension('application/json'));
@@ -45,8 +45,8 @@ class MimeMappingBuilderTest extends TestCase
 		$this->assertEquals('application/mycustomjson', $mime3->getMimeType('json'));
 	}
 
-	public function testAppendExtension()
-	{
+	public function testAppendExtension(): void
+    {
 		$builder = MimeMappingBuilder::blank();
 		$builder->add('foo/bar', 'foobar');
 		$builder->add('foo/bar', 'bar', false);
@@ -54,8 +54,8 @@ class MimeMappingBuilderTest extends TestCase
 		$this->assertEquals('foobar', $mime->getExtension('foo/bar'));
 	}
 
-	public function testAppendMime()
-	{
+	public function testAppendMime(): void
+    {
 		$builder = MimeMappingBuilder::blank();
 		$builder->add('foo/bar', 'foobar');
 		$builder->add('foo/bar2', 'foobar', true, false);
@@ -63,8 +63,8 @@ class MimeMappingBuilderTest extends TestCase
 		$this->assertEquals('foo/bar', $mime->getMimeType('foobar'));
 	}
 
-	public function testSave()
-	{
+	public function testSave(): void
+    {
 		$builder = MimeMappingBuilder::blank();
 		$builder->add('foo/one', 'one');
 		$builder->add('foo/one', 'one1');
