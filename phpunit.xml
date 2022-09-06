@@ -1,22 +1,20 @@
+<?xml version="1.0"?>
 <phpunit
-	bootstrap="tests/bootstrap.php"
-	convertErrorsToExceptions="true"
-	convertNoticesToExceptions="true"
-	convertWarningsToExceptions="true"
-	strict="true">
-
-	<testsuite>
-		<directory>./tests/src</directory>
-	</testsuite>
-
-	<filter>
-		<whitelist>
-			<directory suffix=".php">src</directory>
-		</whitelist>
-	</filter>
-
-	<logging>
-		<log type="coverage-clover" target="build/logs/clover.xml"/>
-	</logging>
-
+         bootstrap="tests/bootstrap.php"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         beStrictAboutOutputDuringTests="true">
+    <coverage>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <report>
+            <clover outputFile="build/logs/clover.xml"/>
+        </report>
+    </coverage>
+    <testsuite name="default">
+        <directory>./tests/src</directory>
+    </testsuite>
+    <logging/>
 </phpunit>
